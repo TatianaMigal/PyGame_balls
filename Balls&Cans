@@ -1,0 +1,265 @@
+import pygame
+from random import choice
+
+size = width, height = 400, 300
+screen = pygame.display.set_mode(size)
+clock = pygame.time.Clock()
+pygame.display.set_caption('Шарики')
+running = True
+
+# параметры круга
+circle_radius = 17
+
+# цвет сосудов
+can_color = pygame.Color(100, 100, 100)
+
+# цвет шаров
+circle_color1 = pygame.Color('white')
+circle_color2 = pygame.Color(128, 0, 200)
+circle_color3 = pygame.Color(255, 255, 0)
+circle_color4 = pygame.Color(0, 128, 0)
+circle_color5 = pygame.Color(0, 255, 255)
+
+v = 50
+
+can1 = []
+can2 = []
+can3 = []
+can4 = []
+can5 = []
+can6 = []
+
+chosen = False
+place_x = False
+place_y = False
+
+count = [0, 0, 0, 0, 0]
+
+for i in range(5):
+    for j in range(5):
+        arr = [1, 2, 3, 4, 5]
+        c = choice(arr)
+        
+        while count[c - 1] = 5:
+            arr del(arr.index(c))
+            c = choice(arr)
+            
+        count[c - 1] += 1
+        
+        if i = 1:
+            if c = 1:
+                can1.append(circle_color1)
+                
+            elif c = 2:
+                can1.append(circle_color2)
+                
+            elif c = 3:
+                can1.append(circle_color3)
+                
+            elif c = 4:
+                can1.append(circle_color4)
+                
+            elif c = 5:
+                can1.append(circle_color5)
+                
+        if i = 2:
+            if c = 1:
+                can1.append(circle_color1)
+                
+            elif c = 2:
+                can1.append(circle_color2)
+                
+            elif c = 3:
+                can1.append(circle_color3)
+                
+            elif c = 4:
+                can1.append(circle_color4)
+                
+            elif c = 5:
+                can1.append(circle_color5)
+                
+        if i = 3:
+            if c = 1:
+                can1.append(circle_color1)
+                
+            elif c = 2:
+                can1.append(circle_color2)
+                
+            elif c = 3:
+                can1.append(circle_color3)
+                
+            elif c = 4:
+                can1.append(circle_color4)
+                
+            elif c = 5:
+                can1.append(circle_color5)
+                
+        if i = 4:
+            if c = 1:
+                can1.append(circle_color1)
+                
+            elif c = 2:
+                can1.append(circle_color2)
+                
+            elif c = 3:
+                can1.append(circle_color3)
+                
+            elif c = 4:
+                can1.append(circle_color4)
+                
+            elif c = 5:
+                can1.append(circle_color5)
+                        
+        if i = 5:
+            if c = 1:
+                can1.append(circle_color1)
+                
+            elif c = 2:
+                can1.append(circle_color2)
+                
+            elif c = 3:
+                can1.append(circle_color3)
+                
+            elif c = 4:
+                can1.append(circle_color4)
+                
+            elif c = 5:
+                can1.append(circle_color5)
+
+# список всех сосудов
+all_cans = []
+
+# каждый сосуд по отдельности
+all_cans.append(can1)
+all_cans.append(can2)
+all_cans.append(can3)
+all_cans.append(can4)
+all_cans.append(can5)
+all_cans.append(can6)
+            
+# Создаем второй холст
+screen2 = pygame.Surface(screen.get_size())
+num = 0
+ussr1 = False
+
+# Запускаем окно
+while running:
+    for event in pygame.event.get():
+        screen2 = pygame.Surface(screen.get_size())
+        if event.type == pygame.QUIT:
+            running = False
+            
+        if event.type == pygame.MOUSEBUTTONUP:
+            # Сохраняем полученные координаты
+            coords = list(event.pos)
+            
+            if num == 0:
+                # проверка местоположения
+                if coords[1] > 125 and coords[1] < 220:
+                    if coords[0] > 20 and coords[0] < 380:
+                        pass
+                    
+                else:
+                    t = int((coords[0] - 20) / 60)
+                    if len(all_cans[t]) == 0:
+                        pass
+                    
+                    else:
+                        chosen_can = t
+                        start_x = 50 + t * 60
+                        start_y = 130 + 17 + ((4 - len(all_cans[t])) * 34)
+                        num += 1
+                        
+            if num == 1:
+                # проверка местоположения
+                if coords[1] > 125 and coords[1] < 220:
+                    if coords[0] > 20 and coords[0] < 380:
+                        pass
+                
+                else:
+                    d = int((coords[0] - 20) / 60)
+                    if len(all_cans[d]) == 5:
+                        pass
+                    
+                    else:
+                        place_x = 50 + d * 60
+                        place_y = 130 + 17 + ((4 - len(all_cans[d])) * 34)
+                        num -= 1
+                        ussr1 = True
+            
+    # Чистим второй холст
+    screen2.fill(pygame.Color('black'))
+    # Перерисовываем сосуды
+    for h in range(6):
+        pygame.draw.rect(screen2, can_color, (30 + h * 60, 130,
+                                              40, 88), 2)
+        pygame.draw.rect(screen2, (0, 0, 0), (32 + h * 60, 125,
+                                              36, 10))
+
+    for i in range(len(circle)):
+        
+        # статичная картинка
+        if ussr1 == False:
+            for j in range(6):
+                for g in range(len(all_cans[j])):
+                    cx = 47 + j * 60
+                    cy = 198 - g * 34
+                    pygame.draw.circle(screen2, all_cans[j][g], (cx, cy), 17)
+
+        # запуск движения        
+        elif ussr1 == True:
+            cx1 = False
+            cy1 = False
+            
+            for j in range(6): 
+                for g in range(len(all_cans[j])):
+                    if g == len(all_cans[j]) - 1 and j == chosen_can:
+                        if not cx and not cy:
+                            cx1 = 47 + j * 60
+                            cy1 = 198 - g * 34
+                            
+                        else:
+                            # подьем шара
+                            if cx1 == start_x and cy1 > 100:
+                                cy1 -= v
+
+                            # по горизонтали вправо
+                            elif cy1 <= 100 and start_x < place_x and cx1 < place_x:
+                                cx1 += v
+
+                            # по горизонтали влево
+                            elif cy1 <= 100 and start_x > place_x and cx1 > place_x:
+                                cx1 += v
+
+                            # опускание 
+                            elif cx1 >= place_x and start_x < place_x and cy1 < place_y:
+                                cx1 = place_x
+                                cy1 += v
+
+                            # опускание
+                            elif cx1 <= place_x and start_x > place_x and cy1 < place_y:
+                                cx1 = place_x
+                                cy1 += v
+
+                            # конец движения
+                            elif cy1 >= place_y and cx1 == place_x:
+                                cy1 = place_y
+                                ussr1 = False
+                                
+                        pygame.draw.circle(screen2, all_cans[j][g], (cx1, cy1), 17)
+                    else:
+                        cx = 47 + j * 60
+                        cy = 198 - g * 34
+                        pygame.draw.circle(screen2, all_cans[j][g], (cx, cy), 17)
+
+            # Изменяем координаты
+            circle[i][ext] += speed[i][ext]
+
+        # Рисуем круг
+        pygame.draw.circle(screen2, circle_color, circle[i], circle_radius, 0)
+
+    # Рисуем на экране сохраненное на втором холсте
+    screen.blit(screen2, (0, 0))
+    pygame.display.flip()
+    clock.tick(100)
+pygame.quit()
