@@ -251,13 +251,7 @@ while running:
                         cx = 47 + j * 60
                         cy = 198 - g * 34
                         pygame.draw.circle(screen2, all_cans[j][g], (cx, cy), 17)
-
-            # Изменяем координаты
-            circle[i][ext] += speed[i][ext]
-
-        # Рисуем круг
-        pygame.draw.circle(screen2, circle_color, circle[i], circle_radius, 0)
-
+                        
     # Рисуем на экране сохраненное на втором холсте
     screen.blit(screen2, (0, 0))
     pygame.display.flip()
