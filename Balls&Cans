@@ -199,65 +199,12 @@ while running:
     for i in range(len(circle)):
         
         # статичная картинка
-        if ussr1 == False:
-            for j in range(6):
-                for g in range(len(all_cans[j])):
-                    cx = 47 + j * 60
-                    cy = 198 - g * 34
-                    pygame.draw.circle(screen2, all_cans[j][g], (cx, cy), 17)
-
-        # запуск движения        
-        elif ussr1 == True:
-            cx1 = False
-            cy1 = False
-            
-            for j in range(6): 
-                for g in range(len(all_cans[j])):
-                    if g == len(all_cans[j]) - 1 and j == chosen_can:
-                        if not cx and not cy:
-                            cx1 = 47 + j * 60
-                            cy1 = 198 - g * 34
-                            
-                        else:
-                            # подьем шара
-                            if cx1 == start_x and cy1 > 100:
-                                cy1 -= v
-
-                            # по горизонтали вправо
-                            elif cy1 <= 100 and start_x < place_x and cx1 < place_x:
-                                cx1 += v
-
-                            # по горизонтали влево
-                            elif cy1 <= 100 and start_x > place_x and cx1 > place_x:
-                                cx1 += v
-
-                            # опускание 
-                            elif cx1 >= place_x and start_x < place_x and cy1 < place_y:
-                                cx1 = place_x
-                                cy1 += v
-
-                            # опускание
-                            elif cx1 <= place_x and start_x > place_x and cy1 < place_y:
-                                cx1 = place_x
-                                cy1 += v
-
-                            # конец движения
-                            elif cy1 >= place_y and cx1 == place_x:
-                                cy1 = place_y
-                                ussr1 = False
-                                
-                        pygame.draw.circle(screen2, all_cans[j][g], (cx1, cy1), 17)
-                    else:
-                        cx = 47 + j * 60
-                        cy = 198 - g * 34
-                        pygame.draw.circle(screen2, all_cans[j][g], (cx, cy), 17)
-
-            # Изменяем координаты
-            circle[i][ext] += speed[i][ext]
-
-        # Рисуем круг
-        pygame.draw.circle(screen2, circle_color, circle[i], circle_radius, 0)
-
+        for j in range(6):
+            for g in range(len(all_cans[j])):
+                cx = 47 + j * 60
+                cy = 198 - g * 34
+                pygame.draw.circle(screen2, all_cans[j][g], (cx, cy), 17)   
+        
     # Рисуем на экране сохраненное на втором холсте
     screen.blit(screen2, (0, 0))
     pygame.display.flip()
